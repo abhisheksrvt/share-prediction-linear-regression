@@ -31,6 +31,11 @@ The project consists of the following key steps:
    - The true historical prices, predicted prices during the training period, and future predicted prices are plotted for visualization.
    - The predicted future prices are printed along with their respective dates.
   
+# Training Results -
+MAE: 0.0049888276624443185
+MSE: 5.880408938968448e-05
+RMSE: 0.007668382449362087
+  
 ![tcs](https://github.com/user-attachments/assets/c19e9ac6-fab6-4426-90ef-97accc992272)
 
 ## Features
