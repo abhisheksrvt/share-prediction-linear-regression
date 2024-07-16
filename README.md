@@ -85,17 +85,17 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 import pickle
 import matplotlib.pyplot as plt
 import pandas as pd
-```python
+```
 
 # Download Historical Stock Price Data
 ```python
 def download_data(ticker, start_date, end_date):
     data = yf.download(ticker, start=start_date, end=end_date)
     return data['Close'].values.reshape(-1, 1), data.index
-
+```
 Downloads historical stock price data from Yahoo Finance.
 Returns closing prices and their corresponding dates.
-```python
+
 # Preprocess Data
 ```python
 def preprocess_data(data, dates, look_back=60):
@@ -122,7 +122,7 @@ def preprocess_data(data, dates, look_back=60):
     end_date = pd.Timestamp(dates[-1])
     
     return X, y, scaler, start_date, end_date
-```python
+```
 Normalizes the data using MinMaxScaler.
 Creates sequences of past prices to predict the next price.
 Saves the scaler and preprocessed data for future use.
@@ -148,7 +148,7 @@ def train_model(X, y):
     print('Model training complete. Saved the model to stock_model.pkl.')
     
     return model
-```python
+```
 Trains a linear regression model using the preprocessed data.
 Evaluates the model's performance using MAE, MSE, and RMSE.
 Saves the trained model.
@@ -166,7 +166,7 @@ def predict(model, X, future_days=30):
         last_sequence[-1][-1] = prediction
     
     return future_predictions
-```python
+```
 Uses the trained model to predict future stock prices.
 Generates predictions for the specified number of future days.
 
@@ -196,7 +196,7 @@ def plot_results(data, y_pred, future_pred, dates, ticker):
     
     plt.tight_layout()
     plt.show()
-```python
+```
 Plots the true historical prices, predicted prices during the training period, and future predicted prices.
 
 # Print Future Predictions
@@ -207,7 +207,7 @@ def print_future_predictions(future_predictions, start_date, end_date):
     for i, prediction in enumerate(future_predictions, start=1):
         next_date = last_date + pd.DateOffset(days=i)
         print(f"{next_date.date()}: {prediction:.2f}")
-```python
+```
 Prints the future predicted prices along with their respective dates.
 
 # Main Function
@@ -237,9 +237,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-```python
-
-# The main function orchestrates the entire workflow, from downloading data to making predictions and visualizing results.
+```
+The main function orchestrates the entire workflow, from downloading data to making predictions and visualizing results.
 
 # License
 This project is licensed under the MIT License - see the LICENSE file for details.
